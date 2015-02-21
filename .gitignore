@@ -1,3 +1,4 @@
 *.priv
 *_
 *.pdf
+*.nogit
