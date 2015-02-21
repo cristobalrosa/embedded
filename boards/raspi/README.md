@@ -131,5 +131,7 @@ And that all, no you can start up your emulated raspi running:
 
 ## References
 This doc is only a summary for the instructions that the following references give us. Thanks guys for sharing.
+* [xecdesing]
+* [www.linux-mitterteich.de]
 [xecdesign]:http://xecdesign.com/qemu-emulating-raspberry-pi-the-easy-way/
 [www.linux-mitterteich.de]:http://www.linux-mitterteich.de/fileadmin/datafile/papers/2013/qemu_raspiemu_lug_18_sep_2013.pdf
