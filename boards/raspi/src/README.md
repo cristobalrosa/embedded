@@ -43,7 +43,7 @@ make ARCH=arm CROSS_COMPILE=${CCPREFIX} oldconfig
 make ARCH=arm CROSS_COMPILE=${CCPREFIX} 
 ```
 Now we are ready to compile our module...!
-## Compile the module
+## Step 4: Compile the module
 Create your simplemodule code and use this makefile
 ```bash
 obj-m += hello.o
@@ -56,5 +56,32 @@ clean:
 ```
 
 [post]:https://github.com/raspberrypi/linux/issues/486 
+## Step 5: Playing...
+```
+pi@myraspi ~/simplemodule $ uname -a
+Linux myraspi 3.10.25+ #622 PREEMPT Fri Jan 3 18:41:00 GMT 2014 armv6l GNU/Linux
+
+pi@myraspi ~/simplemodule $ sudo insmod hello.ko
+pi@myraspi ~/simplemodule $ lsmod | grep hello
+hello                    706  0 
+
+pi@myraspi ~/simplemodule $ modinfo hello.ko
+filename:       /home/pi/simplemodule/hello.ko
+description:    A simple module to test my cross-compile environment
+author:         Cristobal Rosa <cristobalrosa@gmail.com>
+license:        GPL
+srcversion:     AE1AB7B1BA97916068882E2
+depends:        
+vermagic:       3.10.25+ preempt mod_unload modversions ARMv6 
+
+pi@myraspi ~/simplemodule $ tail -n 1 /var/log/kern.log 
+Feb 25 22:31:37 myraspi kernel: [100691.448363] Hello from the raspi world
+
+pi@myraspi ~/simplemodule $ sudo rmmod hello.ko
+pi@myraspi ~/simplemodule $ tail -n 1 /var/log/kern.log
+Feb 25 22:35:06 myraspi kernel: [100901.105449] Bye bye, have fun!
+
+
+```
 ## References
 * Brian Chavez Post http://bchavez.bitarmory.com/archive/2013/01/16/compiling-kernel-modules-for-raspberry-pi.aspx 
