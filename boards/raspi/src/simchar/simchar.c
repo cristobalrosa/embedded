@@ -52,17 +52,17 @@ static int __init simchar_init(void)
 
     if( ret < 0 )
     {
-        printk(KERN_ALERT "Cannot register the device");
+        printk(KERN_ALERT "Cannot register the device\n");
         return ret;
     }
-    printk(KERN_ALERT "Simchar registered...");
+    printk(KERN_ALERT "Simchar registered...\n");
     return 0;
 }
 
 static void __exit simchar_exit(void)
 {
     unregister_chrdev(major, DEVICE_NAME);
-    printk(KERN_ALERT "Simchar exit...");
+    printk(KERN_ALERT "Simchar exit...\n");
 }
 
 

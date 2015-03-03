@@ -24,7 +24,7 @@ The steps are:
 - Get the related githash ```https://github.com/raspberrypi/firmware/blob/3a4ba0c3964f8f0ecc2dd46246a83258d9e4046d/extra/git_hash```
 - Checkout the code: ```git checkout 16eb921a96db3dc3555a65b53b99c15753e6b770 ```
 
-**NOTE** I've upgrade my raspberry and now the kernel version is 3.18.7+.I've realized that 
+**NOTE** I've upgraded my raspberry and now the kernel version is 3.18.7+.I've realized that 
 for that version is much more easy to get the kernel soures. Just download the sources from thit 
 repository and checkout to the branch.
 
