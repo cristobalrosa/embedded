@@ -1,0 +1,4 @@
+bootargs=console=ttyO0 earlyprintk root=/dev/mmcblk0p2 rw
+bootcmd=mmc rescan; fatload mmc 0 0x80200000 zImage; fatload mmc 0 0x82000000 dtb; bootz 0x80200000 - 0x82000000
+uenvcmd=boot
+
