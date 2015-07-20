@@ -79,10 +79,37 @@ and thats all, now we are ready to bake our image:
 bitbake core-image-base
 ```
 
-After a few time we will have our artefact built under the folder /tmp/deploy/imagen
+After a while we will have our artefact built under the folder /tmp/deploy/images/beaglebone/
+
 ## Formatting the SD card
 
-TBD
+```bash
+fdisk -lu /dev/mmcblk0
+mkfs.vfat -F 16 -n "boot" /dev/mmcblk0p1 
+mke2fs -j -L "root" /dev/mmcblk0p2
+```
+
+### Copy the MLO, u-boot image and rootfs to the sdcard.
+
+```bash
+cp ./tmp/deploy/images/beaglebone/{MLO,u-boot.img,zImage} /media/myuser/boot
+cp ./tmp/deploy/images/beaglebone/zImage-am335x-boneblack.dtb /media/myuser/boot/dtb
+sudo tar xpf ./tmp/deploy/images/beaglebone/core-image-minimal-beaglebone.tar.bz2 -C /media/myuser/rootfs
+sync 
+```
+
+### Create uEnv.txt file in /media/myuser/boot/uEnv.txt
+
+This file will be used by uboot to boot the kernel.
+
+```bash
+cat << 'EOF' > /media/myuser/boot/uEnv.txt
+bootargs=console=ttyO0 earlyprintk root=/dev/mmcblk0p2 rw
+bootcmd=mmc rescan; fatload mmc 0 0x80200000 zImage; fatload mmc 0 0x82000000 dtb; bootz 0x80200000 - 0x82000000
+uenvcmd=boot
+
+EOF
+```
 
 ## Time to boot the beaglebone
 ![Booting our new image](https://raw.githubusercontent.com/cristobalrosa/embedded/master/boards/bbb/yocto/images/PokyRunning.jpg)
