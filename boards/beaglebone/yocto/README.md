@@ -1,5 +1,5 @@
 # Playing with yocto
-Let's build a brand new BSP for our BeagleBone back (rev C). 
+Let's build a brand new BSP for our BeagleBone Black (rev C). 
 
 ## Debuging using a serial connection
 Before starting to build our new beaglebone image, it's highly recommendable to set up a USB to TTL Serial interface for debug purposes and to modify u-boot parameters as needed.
