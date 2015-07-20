@@ -116,9 +116,11 @@ EOF
 
 ## References
 * [Yocto Project]
-* [Texas Instruments AM335x U-Boot User's guide] 
+* [Texas Instruments AM335x U-Boot User's guide]
+* [Free Electrons] One of the best resources for embedded engineers.
 [instructions]:http://www.yoctoproject.org/docs/1.8/ref-manual/ref-manual.html#intro-requirements
 [Yocto Project]: https://www.yoctoproject.org/
 [Texas Instruments AM335x U-Boot User's guide]:http://processors.wiki.ti.com/index.php/AM335x_U-Boot_User's_Guide
 [Adafruit PL2303]:http://www.adafruit.com/product/954
 [BBB Accessories]:http://elinux.org/Beagleboard:BeagleBone_Black_Accessories#Adafruit_4_Pin_Cable_.28PL2303.29
+[Free Electrons]: http://free-electrons.com/training/yocto/
