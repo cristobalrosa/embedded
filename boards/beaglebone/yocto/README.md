@@ -8,7 +8,7 @@ To do that I've used the USB-TTL [Adafruit PL2303]. I bought this cable to use i
 
 Once you get your USB-TTL cable, you can connect as follow:
 
-![Serial Connection](https://raw.githubusercontent.com/cristobalrosa/embedded/master/boards/bbb/yocto/images/SerialConnection.jpg)
+![Serial Connection](https://raw.githubusercontent.com/cristobalrosa/embedded/master/boards/beaglebone/yocto/images/SerialConnection.jpg)
 
 Now you are almost ready to start up a serial communication with your BBB, but before you can do that, you need to know 
 which device is your system using for the PL2303 cable.
@@ -112,8 +112,7 @@ EOF
 ```
 
 ## Time to boot the beaglebone
-![Booting our new image](https://raw.githubusercontent.com/cristobalrosa/embedded/master/boards/bbb/yocto/images/PokyRunning.jpg)
-
+![Booting our new image](https://raw.githubusercontent.com/cristobalrosa/embedded/master/boards/beaglebone/yocto/images/PokyRunning.jpg)
 ## References
 * [Yocto Project]
 * [Texas Instruments AM335x U-Boot User's guide]
