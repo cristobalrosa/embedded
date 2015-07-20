@@ -53,8 +53,15 @@ emap is        : crcrlf,delbs,
 Terminal ready
 
 ```
+## Setting up our yocto environment
 
-## Boot the beaglebone
+TDB
+
+## Formatting the SD card
+
+TBD
+
+## Time to boot the beaglebone
 ![Booting our new image](https://raw.githubusercontent.com/cristobalrosa/embedded/master/boards/bbb/yocto/images/PokyRunning.jpg)
 
 ## References
