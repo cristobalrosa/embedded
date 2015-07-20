@@ -55,8 +55,31 @@ Terminal ready
 ```
 ## Setting up our yocto environment
 
-TDB
+First, you need to download yocto in your PC, to do that follow this [instructions].
+Fido is the name of the stable branch at time of writting this document.
 
+Once you get yocto installed, let's create our working environment:
+```bash
+source oe-init-build-env build_bbb
+```
+Now, inside the build_bbb/conf folder we have a local.conf file, that is used by bitbake to create our image.
+To build our bbb image I've modified the following values
+```bash
+MACHINE ?= "beaglebone"
+# This is the folder I use to downlod all the packages. This way I can share it between projects
+DL_DIR ?= "/home/<myuser>/work/yocto/download_cache/"
+# I prefer to use debian like packages
+PACKAGE_CLASSES ?= "package_deb"
+# let's build the sdk and add an ssh server to our image
+EXTRA_IMAGE_FEATURES = "debug-tweaks tools-sdk tools-debug ssh-server-dropbear"
+```
+and thats all, now we are ready to bake our image:
+
+```bash
+bitbake core-image-base
+```
+
+After a few time we will have our artefact built under the folder /tmp/deploy/imagen
 ## Formatting the SD card
 
 TBD
@@ -67,6 +90,7 @@ TBD
 ## References
 * [Yocto Project]
 * [Texas Instruments AM335x U-Boot User's guide] 
+[instructions]:http://www.yoctoproject.org/docs/1.8/ref-manual/ref-manual.html#intro-requirements
 [Yocto Project]: https://www.yoctoproject.org/
 [Texas Instruments AM335x U-Boot User's guide]:http://processors.wiki.ti.com/index.php/AM335x_U-Boot_User's_Guide
 [Adafruit PL2303]:http://www.adafruit.com/product/954
