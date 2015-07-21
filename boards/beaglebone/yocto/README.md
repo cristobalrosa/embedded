@@ -113,6 +113,42 @@ EOF
 
 ## Time to boot the beaglebone
 ![Booting our new image](https://raw.githubusercontent.com/cristobalrosa/embedded/master/boards/beaglebone/yocto/images/PokyRunning.jpg)
+
+## Working with the SDK
+
+Poky can create an SDK installer for us. I think this is the best way to start developing for our target.
+If we want to build the sdk you just need to run the following command:
+```
+bitbake core-image-minimal -c  populate_sdk
+```
+Once the process finishes, poky will create a installer for us. We just need to execute the installer
+and install the sdk where we think is the right place.
+
+```
+./tmp/deploy/sdk/poky-glibc-x86_64-core-image-minimal-cortexa8hf-vfp-neon-toolchain-1.8.sh 
+Enter target directory for SDK (default: /opt/poky/1.8): 
+You are about to install the SDK to "/opt/poky/1.8". Proceed[Y/n]?y
+[sudo] password for devel: 
+Extracting SDK...done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+
+```
+
+To use our brand new SDK:
+```
+source /opt/poky/1.8/environment-setup-cortexa8hf-vfp-neon-poky-linux-gnueabi
+echo $CC
+arm-poky-linux-gnueabi-gcc -march=armv7-a -mfloat-abi=hard -mfpu=neon -mtune=cortex-a8 --sysroot=/opt/poky/1.8/sysroots/cortexa8hf-vfp-neon-poky-linux-gnueabi
+
+$CC test1_yocto.c -o test1_yocto
+file test1_yocto
+test1_yocto: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 2.6.32, BuildID[sha1]=fcfbb1e4789dcb54e7e690aeca98822911950e28, not stripped
+
+```
+
+And that's all! Enjoy!
+
 ## References
 * [Yocto Project]
 * [Texas Instruments AM335x U-Boot User's guide]
