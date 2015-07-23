@@ -48,6 +48,40 @@ bitbake rpi-basic-image -c populate_sdk
 ```
 sudo dd if=rpi-basic-image-raspberrypi.rpi-sdimg of=/dev/mmcblk0
 ```
+
+## Add WIFI support
+
+Modify the local.conf file and add the following line:
+```
+IMAGE_INSTALL_append = " wpa-supplicant wireless-tools dhcp-client linux-firmware"
+```
+Build and write the image again, and before the raspberry boots, configure your network interface.
+
+```bash
+root@raspberrypi:~# cat /etc/network/interfaces 
+# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
+ 
+# The loopback interface
+auto lo
+iface lo inet loopback
+
+# Wireless interfaces
+auto wlan0
+iface wlan0 inet dhcp
+        wpa-conf /etc/wpa_supplicant.conf
+
+
+root@raspberrypi:~# cat /etc/wpa_supplicant.conf 
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=0
+update_config=1
+
+network={
+        ssid="YOUR_SSID"
+        psk="YOUR_PASS"
+        key_mgmt=YOUR MANAGEMENT METHOD
+}
+```
 ## References
 * [Raspberry] Repo
 [Raspberry]:http://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/about/
