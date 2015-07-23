@@ -133,6 +133,8 @@ And that all, no you can start up your emulated raspi running:
 This doc is only a summary for the instructions that the following references give us. Thanks guys for sharing.
 * [xecdesign]
 * [www.linux-mitterteich.de]
+* [BCM2835 GPIO Lib]
 
 [xecdesign]:http://xecdesign.com/qemu-emulating-raspberry-pi-the-easy-way/
 [www.linux-mitterteich.de]:http://www.linux-mitterteich.de/fileadmin/datafile/papers/2013/qemu_raspiemu_lug_18_sep_2013.pdf
+[BCM2835 GPIO Lib]:http://www.airspayce.com/mikem/bcm2835/
